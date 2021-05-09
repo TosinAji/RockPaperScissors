@@ -28,6 +28,9 @@ FUNCTION Get winner (need {userPlay} and {computerPlay})
 	compare the user answer with the computer answer, decide if it is a win a lose or a draw for the user
 	Store that message in a {result} variable
 
+	EVENT the user's play didn't fly
+		do nothing
+
 	EVENT the user plays rock
 		if computer plays rock
 			it's a draw, set {result} as "It's a draw my guy!"
@@ -55,16 +58,12 @@ FUNCTION Get winner (need {userPlay} and {computerPlay})
 	RETURN {result}
 
 FUNCTION Get user play
-	Ask user to type their answer
-	store the answer in a {userPlay} variable
-	adujst {userPlay} to lower case
-
-	if {userPlay} is 'rock' or 'paper' or 'scissors' 
-		continues
-	otherwise
-		ask again for a legitimate answer
-
-	RETURN {userPlay}
+	Ask user to type their answer, convert the answer to lowercase
+	 	store the answer in a {toVerify} variable
+	if {toVerify} is 'rock' or 'paper' or 'scissors' 
+        RETURN {userPlay}
+    otherwise
+    	tell the user no
 
 FUNCTION Declare outcome (needs {userPlay}, {computerPlay} and {result})
 	output the outcome of the match

@@ -1,0 +1,74 @@
+Make Rock, paper, scissors
+
+input: rock , paper, or scissors from the user
+output: rock, paper or scissors from the computer and a declaration of the result of the match
+
+
+Plan:
+ask the user to pick rock, paper or scissors
+
+ask the computer to pick rock paper or scissors
+
+compare the user answer with the computer answer, decide if it is a win a lose or a draw for the user
+
+declare the computer's play
+declare the result of the match
+
+Break it down (pseudo code):
+
+FUNCTION Get user play
+	Ask user to type their answer
+	store the answer in a {userPlay} variable
+	adujst {userPlay} to lower case
+
+	if {userPlay} is 'rock' or 'paper' or 'scissors' 
+		continues
+	otherwise
+		ask again for a legitimate answer
+
+	RETURN {userPlay}
+
+
+FUNCTION Get computer play
+	create a list of plays (rock,paper,scissors)
+	generate an integer between 1 and 3 inclusive
+	whichever number is chosen will map to the play
+	store the play in a {computerPlay} variable
+
+	RETURN {computerPlay}
+
+FUNCTION Get winner (need {userPlay} and {computerPlay})
+	compare the user answer with the computer answer, decide if it is a win a lose or a draw for the user
+	Store that message in a {result} variable
+
+	EVENT the user plays rock
+		if computer plays rock
+			it's a draw, set {result} as "It's a draw my guy!"
+		if computer plays scissors
+			it's a win, set {result} as "It's a win my guy!"
+		if computer plays paper
+			it's a loss, set {result} as "It's a loss my guy!"
+
+	EVENT the user plays scissors
+		if the computer plays scissors
+			it's a draw, set {result} as "It's a draw my guy!"
+		if the computer plays paper
+			it's a win, set {result} as "It's a win my guy!"
+		if the computer plays rock
+			it's a loss, set {result} as "It's a loss my guy!"
+
+	EVENT the user plays paper
+		if the computer plays paper
+			it's a draw, set {result} as "It's a draw my guy!"
+		if the computer plays rock
+			it's a win, set {result} as "It's a win my guy!"
+		if the computer plays scissors
+			it's a loss, set {result} as "It's a loss my guy!"
+
+	RETURN {result}
+
+FUNCTION Declare outcome (needs {userPlay}, {computerPlay} and {result})
+	output the outcome of the match
+	show the user a message "You played {userPlay} The computer played {computerPlay} {result}"
+
+

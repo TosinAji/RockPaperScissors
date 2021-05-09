@@ -13,8 +13,8 @@ function getComputerPlay() {
     return computerPlay;
 }
 
-// FUNCTION Get winner (need {userPlay} and {computerPlay})
-function getWinner(userPlay, computerPlay) {
+// FUNCTION PlayRound(need {userPlay} and {computerPlay})
+function playRound(userPlay, computerPlay) {
 
 // 	compare the user answer with the computer answer, decide if it is a win a lose or a draw for the user
 // 	Store that message in a {result} variable
@@ -83,21 +83,25 @@ function getWinner(userPlay, computerPlay) {
     return result;
 }
 
+// I DON'T LIKE THIS LET'S LEAVE IT OUT FOR NOW
+// // FUNCTION Get user play
+// function getUserPlay() {
+// 	// Ask user to type their answer, convert the answer to lowercase
+// 	// store the answer in a {toVerify} variable
 
-// FUNCTION Get user play
-function getUserPlay() {
-	// Ask user to type their answer, convert the answer to lowercase
-	// store the answer in a {toVerify} variable
+//     let userPlay = prompt('please type your play (rock, paper, scissors: ').toLowerCase();
 
-    let userPlay = prompt('please type your play (rock, paper, scissors: ').toLowerCase();
+// 	// if {toVerify} is 'rock' or 'paper' or 'scissors' 
+//     if (userPlay === 'rock' || userPlay === 'paper' || userPlay === 'scissors') {
+//         // RETURN {userPlay}
+//         return userPlay;
+//     // otherwise
+//     } else {
+//         // tell the user no
+//         alert("Sorry that doesn't make sense to me")
+//     }
+// }
 
-	// if {toVerify} is 'rock' or 'paper' or 'scissors' 
-    if (userPlay === 'rock' || userPlay === 'paper' || userPlay === 'scissors') {
-        // RETURN {userPlay}
-        return userPlay;
-    // otherwise
-    } else {
-        // tell the user no
-        alert("Sorry that doesn't make sense to me")
-    }
-}
+const userSelection = 'rock';
+const computerSelection = getComputerPlay();
+console.log(playRound(userSelection, computerSelection))

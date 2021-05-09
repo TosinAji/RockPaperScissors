@@ -16,19 +16,6 @@ declare the result of the match
 
 Break it down (pseudo code):
 
-FUNCTION Get user play
-	Ask user to type their answer
-	store the answer in a {userPlay} variable
-	adujst {userPlay} to lower case
-
-	if {userPlay} is 'rock' or 'paper' or 'scissors' 
-		continues
-	otherwise
-		ask again for a legitimate answer
-
-	RETURN {userPlay}
-
-
 FUNCTION Get computer play
 	create a list of plays (rock,paper,scissors)
 	generate an integer between 1 and 3 inclusive
@@ -66,6 +53,18 @@ FUNCTION Get winner (need {userPlay} and {computerPlay})
 			it's a loss, set {result} as "It's a loss my guy!"
 
 	RETURN {result}
+
+FUNCTION Get user play
+	Ask user to type their answer
+	store the answer in a {userPlay} variable
+	adujst {userPlay} to lower case
+
+	if {userPlay} is 'rock' or 'paper' or 'scissors' 
+		continues
+	otherwise
+		ask again for a legitimate answer
+
+	RETURN {userPlay}
 
 FUNCTION Declare outcome (needs {userPlay}, {computerPlay} and {result})
 	output the outcome of the match

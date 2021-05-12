@@ -16,6 +16,9 @@ function getComputerPlay() {
 // FUNCTION PlayRound(need {userPlay} and {computerPlay})
 function playRound(userPlay, computerPlay) {
 
+// make userPlay case-insensitive
+userPlay = userPlay.toLowerCase();
+
 // 	compare the user answer with the computer answer, decide if it is a win a lose or a draw for the user
 // 	Store that message in a {result} variable
     let result;
@@ -102,6 +105,8 @@ function playRound(userPlay, computerPlay) {
 //     }
 // }
 
-const userSelection = 'rock';
+
+
+const userSelection = 'ScissoRs';
 const computerSelection = getComputerPlay();
-console.log(playRound(userSelection, computerSelection))
+console.log(playRound(userSelection, computerSelection));

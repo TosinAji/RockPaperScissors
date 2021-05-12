@@ -2,14 +2,11 @@
 
 // FUNCTION Get computer play
 function getComputerPlay() {
-// 	create a list of plays (rock,paper,scissors)
     let availablePlays = ["rock", "paper", "scissors"];
 // 	generate an integer between 0 and 2 inclusive
     let choice = Math.floor(Math.random() * 3);
-// 	whichever number is chosen will map to the play
 // 	store the play in a {computerPlay} variable
     let computerPlay = availablePlays[choice];
-// 	RETURN {computerPlay}
     return computerPlay;
 }
 
@@ -19,94 +16,91 @@ function playRound(userPlay, computerPlay) {
 // make userPlay case-insensitive
 userPlay = userPlay.toLowerCase();
 
-// 	compare the user answer with the computer answer, decide if it is a win a lose or a draw for the user
-// 	Store that message in a {result} variable
+// 	compare the user answer with the computer answer
     let result;
 
-// EVENT the user's play didn't fly
+    // check that userPlay isn't empty
     if (userPlay === undefined) {
         // do nothing
         return;
     }
 
-// 	EVENT the user plays rock
     if (userPlay === "rock") {
-
-// 		if computer plays rock
         if (computerPlay === "rock") {
-// 			it's a draw, set {result} as "It's a draw my guy!"
-            result = `It's a draw my guy! You both played ${userPlay}!`;
-// 		otherwise if computer plays scissors
+            result = `draw`;
         } else if (computerPlay === "scissors") {
-// 			it's a win, set {result} as "It's a win my guy!"
-            result = `It's a win my guy! ${userPlay} beats ${computerPlay}!`;
-// 		otherwise if computer plays paper
+            result = `win`;
         } else if (computerPlay === "paper") {
-// 			it's a loss, set {result} as "It's a loss my guy!"
-            result = `It's a loss my guy! ${computerPlay} beats ${userPlay}!`;
+            result = `loss`;
         }
-
-    }
-
-// 	EVENT the user plays scissors
-    if (userPlay === "scissors") {
-// 		if the computer plays scissors
+    } else if (userPlay === "scissors") {
         if (computerPlay === "scissors") { 
-// 			it's a draw, set {result} as "It's a draw my guy!"
-            result = `It's a draw my guy! You both played ${userPlay}!`;
-// 		otherwise if the computer plays paper
+            result = `draw`;
         } else if (computerPlay === "paper") {
-// 			it's a win, set {result} as "It's a win my guy!"
-            result = `It's a win my guy! ${userPlay} beats ${computerPlay}!`;
-// 		otherwise if the computer plays rock
+            result = `win`;
         } else if (computerPlay === "rock") {
-// 			it's a loss, set {result} as "It's a loss my guy!"
-            result = `It's a loss my guy! ${computerPlay} beats ${userPlay}!`;
+            result = `loss`;
         }
-    }
-
-// 	EVENT the user plays paper
-    if (userPlay === "paper") {
-// 		if the computer plays paper
+    } else if (userPlay === "paper") {
         if (computerPlay === "paper") {
-// 			it's a draw, set {result} as "It's a draw my guy!"
-            result = `It's a draw my guy! You both played ${userPlay}!`;
-// 		otherwise if the computer plays rock
+            result = `draw`;
         } else if (computerPlay === "rock") {
-// 			it's a win, set {result} as "It's a win my guy!"
-            result = `It's a win my guy! ${userPlay} beats ${computerPlay}!`;
-// 		otherwise if the computer plays scissors
+            result = `win`;
         } else if (computerPlay === "scissors") {
-// 			it's a loss, set {result} as "It's a loss my guy!"
-            result = `It's a loss my guy! ${computerPlay} beats ${userPlay}!`;
+            result = `loss`;
         }
+    } else {
+        result = undefined;
     }
+    console.log(generateResultMessage(result, userPlay, computerPlay));
+    
 
-// 	RETURN {result}
     return result;
 }
 
-// I DON'T LIKE THIS LET'S LEAVE IT OUT FOR NOW
-// // FUNCTION Get user play
-// function getUserPlay() {
-// 	// Ask user to type their answer, convert the answer to lowercase
-// 	// store the answer in a {toVerify} variable
+function generateResultMessage(outcome, userPlay, computerPlay) {
 
-//     let userPlay = prompt('please type your play (rock, paper, scissors: ').toLowerCase();
-
-// 	// if {toVerify} is 'rock' or 'paper' or 'scissors' 
-//     if (userPlay === 'rock' || userPlay === 'paper' || userPlay === 'scissors') {
-//         // RETURN {userPlay}
-//         return userPlay;
-//     // otherwise
-//     } else {
-//         // tell the user no
-//         alert("Sorry that doesn't make sense to me")
-//     }
-// }
+    if (outcome === undefined) {
+        return `oops I think something went wrong`;
+    } else if (outcome === 'draw') {
+        return `It's a ${outcome} my guy! You both played ${userPlay}!`;
+    } else {
+        return `It's a ${outcome} my guy! ${userPlay} beats ${computerPlay}!`;
+    }
+}
 
 
+function game() {
 
-const userSelection = 'ScissoRs';
-const computerSelection = getComputerPlay();
-console.log(playRound(userSelection, computerSelection));
+    
+    // console.log(playRound(userSelection, computerSelection));
+    
+    let userScore = 0;
+    let computerScore = 0;
+    
+    
+    // run this 5 times
+    for (var i = 0; i < 5; i++) {
+
+        let userSelection = prompt("Please play 'Rock', 'paper' or 'scissors'");
+        let outcome = playRound(userSelection, getComputerPlay());
+
+        if (outcome === 'win') {
+            userScore += 1;
+        } else if (outcome === 'loss') {
+            computerScore += 1;
+        } 
+    }
+    
+    if (userScore > computerScore) {
+        return `The user won with a score of ${userScore}`
+    } else if (computerScore > userScore) {
+        return `The computer won with a score of ${computerScore}`
+    } else {
+        return `I guess it was a draw! you both got a score of ${userScore}`
+    }
+}
+ 
+
+
+console.log(game());

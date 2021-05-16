@@ -5,7 +5,6 @@ function getComputerPlay() {
     let availablePlays = ["rock", "paper", "scissors"];
 // 	generate an integer between 0 and 2 inclusive
     let choice = Math.floor(Math.random() * 3);
-// 	store the play in a {computerPlay} variable
     let computerPlay = availablePlays[choice];
     return computerPlay;
 }
@@ -16,8 +15,7 @@ function playRound(userPlay, computerPlay) {
 // make userPlay case-insensitive
 userPlay = userPlay.toLowerCase();
 
-// 	compare the user answer with the computer answer
-    let result;
+let result;
 
     // check that userPlay isn't empty
     if (userPlay === undefined) {
@@ -25,6 +23,7 @@ userPlay = userPlay.toLowerCase();
         return;
     }
 
+    // 	compare the user answer with the computer answer
     if (userPlay === "rock") {
         if (computerPlay === "rock") {
             result = `draw`;
@@ -52,8 +51,8 @@ userPlay = userPlay.toLowerCase();
     } else {
         result = undefined;
     }
+
     console.log(generateResultMessage(result, userPlay, computerPlay));
-    
 
     return result;
 }
@@ -71,13 +70,9 @@ function generateResultMessage(outcome, userPlay, computerPlay) {
 
 
 function game() {
-
-    
-    // console.log(playRound(userSelection, computerSelection));
     
     let userScore = 0;
     let computerScore = 0;
-    
     
     // run this 5 times
     for (var i = 0; i < 5; i++) {
@@ -101,6 +96,4 @@ function game() {
     }
 }
  
-
-
 console.log(game());

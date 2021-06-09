@@ -77,8 +77,10 @@ function game() {
     // run this 5 times
     // for (var i = 0; i < 5; i++) {
 
+
     let userSelection = prompt("Please play 'Rock', 'paper' or 'scissors'");
     let outcome = playRound(userSelection, getComputerPlay());
+
 
     if (outcome === 'win') {
         userScore += 1;
@@ -97,4 +99,11 @@ function game() {
     }
 }
  
-console.log(game());
+
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => button.addEventListener('click', function(event) {
+    playRound(button.getAttribute('id'), getComputerPlay())
+}));
+
+// console.log(game());

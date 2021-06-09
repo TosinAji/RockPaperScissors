@@ -1,15 +1,21 @@
 'use strict';
 
-// FUNCTION Get computer play
+let userScore = 0;
+let computerScore = 0;
+let gameCount = 0;
+
+const winner = document.querySelector('#game-result');
+const buttons = document.querySelectorAll('button');
+const gameResult = document.querySelector('#round-result');
+
+
 function getComputerPlay() {
     let availablePlays = ["rock", "paper", "scissors"];
-// 	generate an integer between 0 and 2 inclusive
     let choice = Math.floor(Math.random() * 3);
     let computerPlay = availablePlays[choice];
     return computerPlay;
 }
 
-// FUNCTION PlayRound(need {userPlay} and {computerPlay})
 function playRound(userPlay, computerPlay) {
 
 // make userPlay case-insensitive
@@ -52,7 +58,7 @@ let result;
         result = undefined;
     }
 
-    console.log(generateResultMessage(result, userPlay, computerPlay));
+    gameResult.textContent = generateResultMessage(result, userPlay, computerPlay)
 
     return result;
 }
@@ -68,28 +74,8 @@ function generateResultMessage(outcome, userPlay, computerPlay) {
     }
 }
 
+function finalScore() {
 
-function game() {
-    
-    let userScore = 0;
-    let computerScore = 0;
-    
-    // run this 5 times
-    // for (var i = 0; i < 5; i++) {
-
-
-    let userSelection = prompt("Please play 'Rock', 'paper' or 'scissors'");
-    let outcome = playRound(userSelection, getComputerPlay());
-
-
-    if (outcome === 'win') {
-        userScore += 1;
-    } else if (outcome === 'loss') {
-        computerScore += 1;
-    } 
-    
-    // }
-    
     if (userScore > computerScore) {
         return `The user won with a score of ${userScore}`
     } else if (computerScore > userScore) {
@@ -99,11 +85,18 @@ function game() {
     }
 }
  
-
-
-const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => button.addEventListener('click', function(event) {
-    playRound(button.getAttribute('id'), getComputerPlay())
+    let outcome = playRound(button.getAttribute('id'), getComputerPlay());
+    gameCount++
+
+    if (outcome === 'win') {
+        userScore += 1;
+    } else if (outcome === 'loss') {
+        computerScore += 1;
+    } 
+
+    if (gameCount === 5) {
+        winner.textContent = finalScore();
+    }
 }));
 
-// console.log(game());

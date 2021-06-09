@@ -75,17 +75,18 @@ function game() {
     let computerScore = 0;
     
     // run this 5 times
-    for (var i = 0; i < 5; i++) {
+    // for (var i = 0; i < 5; i++) {
 
-        let userSelection = prompt("Please play 'Rock', 'paper' or 'scissors'");
-        let outcome = playRound(userSelection, getComputerPlay());
+    let userSelection = prompt("Please play 'Rock', 'paper' or 'scissors'");
+    let outcome = playRound(userSelection, getComputerPlay());
 
-        if (outcome === 'win') {
-            userScore += 1;
-        } else if (outcome === 'loss') {
-            computerScore += 1;
-        } 
-    }
+    if (outcome === 'win') {
+        userScore += 1;
+    } else if (outcome === 'loss') {
+        computerScore += 1;
+    } 
+    
+    // }
     
     if (userScore > computerScore) {
         return `The user won with a score of ${userScore}`
